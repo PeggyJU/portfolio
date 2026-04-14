@@ -12,12 +12,9 @@
     <style>
         :root {
             --bg-base: #f9f8f6;
-            /* 溫潤的米杏色 */
             --card-white: #ffffff;
             --primary-accent: #6d8299;
-            /* 莫蘭迪灰藍 */
             --secondary-accent: #a9907e;
-            /* 柔和土肉桂色 */
             --text-dark: #3c3c3c;
             --text-soft: #707070;
             --border-soft: #e8e6e1;
@@ -43,10 +40,26 @@
             padding: 100px 30px;
         }
 
-        /* Header: 溫暖且具備設計感 */
         .header {
             margin-bottom: 120px;
             position: relative;
+        }
+
+        .profile-pic {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10%;
+            border: 3px solid var(--border-soft);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
         }
 
         .header h1 {
@@ -74,7 +87,6 @@
             background-color: var(--secondary-accent);
         }
 
-        /* Section Title: 優雅的分類 */
         h2 {
             font-size: 13px;
             color: var(--secondary-accent);
@@ -85,7 +97,6 @@
             padding-left: 15px;
         }
 
-        /* Profile: 溫潤的文字排列 */
         .about-box {
             font-size: 17px;
             color: var(--text-dark);
@@ -107,6 +118,7 @@
             border: 1px solid var(--border-soft);
             box-shadow: 0 15px 35px rgba(109, 130, 153, 0.05);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 30px;
         }
 
         .project-card:hover {
@@ -120,6 +132,36 @@
             object-fit: cover;
             border-radius: 20px;
             margin-bottom: 25px;
+            border: 1px solid var(--border-soft);
+        }
+
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .image-row img {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid var(--border-soft);
+            object-fit: cover;
+        }
+
+        .mood-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .mood-gallery img {
+            width: 220px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
             border: 1px solid var(--border-soft);
         }
 
@@ -167,7 +209,6 @@
             font-size: 20px;
         }
 
-        /* Button: 簡約而不凡 */
         .link-btn {
             display: inline-block;
             text-decoration: none;
@@ -187,7 +228,6 @@
             box-shadow: 0 8px 20px rgba(109, 130, 153, 0.3);
         }
 
-        /* Footer */
         .footer {
             margin-top: 150px;
             padding: 60px 0;
@@ -212,6 +252,20 @@
                 font-size: 36px;
             }
         }
+
+        /* 平板 */
+        @media (max-width: 900px) {
+            .image-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 手機 */
+        @media (max-width: 600px) {
+            .image-row {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -222,8 +276,9 @@
         <header class="header">
             <h1>曾 婕 語</h1>
             <div class="subtitle">
-                前端開發與軟體設計學習者
+                前後端開發與軟體設計學習者
             </div>
+            <img src="./Photo/profile.jpg" class="profile-pic" alt="個人照">
         </header>
 
         <section>
@@ -261,8 +316,8 @@
 
                 <div class="project-card">
                     <span class="tech-tag">網頁開發 ＆ 資料系統設計</span>
-                    <img src="./Photo/easygo-map.jpg" alt="Easy-Go Project Image" class="project-img">
                     <h3>Easy-Go｜無障礙智慧地圖平台</h3>
+                    <img src="./Photo/easygo-map.jpg" alt="Easy-Go Project Image" class="project-img">
 
                     <p>
                         Easy-Go 為無障礙資訊整合平台，提供行動不便者與銀髮族快速查詢周邊設施服務。
@@ -287,13 +342,94 @@
                         GitHub
                     </a>
 
-                    <a class="link-btn" href="https://drive.google.com/file/d/1CMISHbPo7LSJXluhoC4yZpBCwDK2eati/view?usp=drivesdk" target="_blank">
+                    <a class="link-btn"
+                        href="https://drive.google.com/file/d/1CMISHbPo7LSJXluhoC4yZpBCwDK2eati/view?usp=drivesdk"
+                        target="_blank">
                         展示影片
                     </a>
                 </div>
 
             </div>
         </section>
+
+        <div class="project-card">
+            <span class="tech-tag">網頁 APP ＆ UI/UX 互動設計</span>
+            <h3>MoodBloom｜即時心情療癒日記板</h3>
+
+            <div class="mood-gallery">
+                <img src="./Photo/mood-home.jpg" alt="首頁">
+                <img src="./Photo/mood-main.jpg" alt="主畫面">
+                <img src="./Photo/mood-calendar.jpg" alt="日曆回顧">
+                <img src="./Photo/mood-game.jpg" alt="氣球互動">
+                <img src="./Photo/mood-game1.jpg" alt="互動回饋">
+            </div>
+
+            <p>
+                本專案為以 <strong>情緒紀錄與自我療癒</strong> 為核心概念的互動式網頁，
+                提供使用者記錄每日心情、撰寫日記、上傳照片與選擇 emoji，
+                並透過溫暖療癒風格介面提升使用體驗。
+            </p>
+
+            <p>
+                系統包含 <strong>心情時光軸</strong>、<strong>日曆式回顧</strong> 與
+                <strong>戳氣球獲得正能量語錄</strong> 的互動小遊戲，
+                結合 UI 動畫與前端互動設計，打造兼具功能性與情緒陪伴的數位日記平台。
+            </p>
+
+            <ul class="highlights">
+                <li>每日心情日記與照片上傳</li>
+                <li>Emoji 心情標記系統</li>
+                <li>日曆式歷程回顧</li>
+                <li>翻轉日記卡片動畫</li>
+                <li>戳氣球療癒互動遊戲</li>
+            </ul>
+
+            <p>
+                <strong>技術：</strong> HTML / CSS / JavaScript / JSON / UI Animation
+            </p>
+
+            <a class="link-btn" href="https://github.com/PeggyJU/MoodBloom.git" target="_blank">
+                GitHub
+            </a>
+        </div>
+
+        <div class="project-card">
+            <span class="tech-tag">C# Windows Forms ＆ 桌面應用</span>
+            <h3>個人記帳系統｜Expense Tracker</h3>
+            <div class="image-row">
+                <img src="./Photo/inital.png" alt="初始畫面">
+                <img src="./Photo/income.png" alt="收入畫面">
+                <img src="./Photo/expense.png" alt="支出畫面">
+                <img src="./Photo/balance.png" alt="統計畫面">
+            </div>
+
+            <p>
+                本專案為使用 <strong>C# Windows Forms</strong> 開發之個人記帳系統，
+                提供使用者記錄收入與支出，並透過分類、日期與備註進行財務管理。
+                系統採用事件驅動設計，並以 List 結構管理資料。
+            </p>
+
+            <p>
+                使用者可新增支出或收入資料，並依照不同類別（飲食、交通、娛樂等）進行分類，
+                系統會即時更新資料清單，提升操作效率與可視化管理能力。
+            </p>
+
+            <ul class="highlights">
+                <li>收入與支出資料輸入系統</li>
+                <li>多分類財務管理（飲食、交通、娛樂等）</li>
+                <li>日期與備註紀錄功能</li>
+                <li>DataGridView 即時資料顯示</li>
+                <li>基礎資料結構（List）管理</li>
+            </ul>
+
+            <p>
+                <strong>技術：</strong> C# / Windows Forms / OOP / Event-driven Programming
+            </p>
+
+            <a class="link-btn" href="https://github.com/PeggyJU/Expense-Tracker.git" target="_blank">
+                GitHub
+            </a>
+        </div>
 
         <footer class="footer">
             &copy; 2026 TSENG CHIEH-YU
