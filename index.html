@@ -110,7 +110,6 @@
             font-weight: 700;
         }
 
-        /* Project Card: 軟感設計 (Soft UI) */
         .project-card {
             background-color: var(--card-white);
             padding: 50px;
@@ -135,34 +134,50 @@
             border: 1px solid var(--border-soft);
         }
 
-        .image-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .image-row,
+        .mood-gallery {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+        }
+
+        .image-row,
+        .mood-gallery {
+            display: flex;
             gap: 15px;
-            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+        }
+
+        .image-row::-webkit-scrollbar,
+        .mood-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .image-row img,
+        .mood-gallery img {
+            height: auto;
+            object-fit: contain;
+            scroll-snap-align: start;
+            border-radius: 15px;
+            border: 1px solid var(--border-soft);
         }
 
         .image-row img {
-            width: 100%;
-            border-radius: 15px;
-            border: 1px solid var(--border-soft);
-            object-fit: cover;
-        }
-
-        .mood-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 25px;
+            flex: 0 0 240px;
+            width: 240px;
         }
 
         .mood-gallery img {
-            width: 220px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 1px solid var(--border-soft);
+            flex: 0 0 360px;
+            width: 360px;
         }
 
         .tech-tag {
@@ -251,19 +266,17 @@
             .header h1 {
                 font-size: 36px;
             }
-        }
 
-        /* 平板 */
-        @media (max-width: 900px) {
-            .image-row {
-                grid-template-columns: repeat(2, 1fr);
+            .image-row img {
+                flex: 0 0 85%;
+                width: 85%;
+                scroll-snap-align: center;
             }
-        }
 
-        /* 手機 */
-        @media (max-width: 600px) {
-            .image-row {
-                grid-template-columns: 1fr;
+            .mood-gallery img {
+                flex: 0 0 95%;
+                width: 95%;
+                scroll-snap-align: center;
             }
         }
     </style>
