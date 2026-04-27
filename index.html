@@ -158,7 +158,23 @@
 
         .image-row::-webkit-scrollbar,
         .mood-gallery::-webkit-scrollbar {
-            display: none;
+            height: 5px;
+        }
+
+        .image-row::-webkit-scrollbar-track,
+        .mood-gallery::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .image-row::-webkit-scrollbar-thumb,
+        .mood-gallery::-webkit-scrollbar-thumb {
+            background-color: var(--border-soft);
+            border-radius: 10px;
+        }
+
+        .image-row::-webkit-scrollbar-thumb:hover,
+        .mood-gallery::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary-accent);
         }
 
         .image-row img,
@@ -253,6 +269,10 @@
             letter-spacing: 0.1em;
         }
 
+        .swipe-hint {
+            display: none; /* 在電腦版預設隱藏，因為電腦版通常看得出是橫幅 */
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 60px 20px;
@@ -263,8 +283,35 @@
                 border-radius: 20px;
             }
 
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-bottom: 60px;
+            }
+
             .header h1 {
                 font-size: 36px;
+            }
+
+            .header .subtitle {
+                letter-spacing: 0.1em;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .header .profile-pic {
+                position: static;
+                margin-top: 30px;
+                width: 120px;
+                height: 160px;
+            }
+
+            .header::after {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -20px;
             }
 
             .image-row img {
@@ -277,6 +324,33 @@
                 flex: 0 0 95%;
                 width: 95%;
                 scroll-snap-align: center;
+            }
+
+            .swipe-hint {
+                display: block;
+                font-size: 13px;
+                color: var(--secondary-accent);
+                text-align: right;
+                margin-bottom: 10px;
+                letter-spacing: 0.1em;
+                animation: pulseHint 2s infinite;
+            }
+
+            @keyframes pulseHint {
+                0% {
+                    opacity: 0.6;
+                    transform: translateX(0);
+                }
+
+                50% {
+                    opacity: 1;
+                    transform: translateX(3px);
+                }
+
+                100% {
+                    opacity: 0.6;
+                    transform: translateX(0);
+                }
             }
         }
     </style>
@@ -372,7 +446,7 @@
         <div class="project-card">
             <span class="tech-tag">網頁 APP ＆ UI/UX 互動設計</span>
             <h3>MoodBloom｜即時心情療癒日記板</h3>
-
+            <div class="swipe-hint">左右滑動查看更多照片 ➔</div>
             <div class="mood-gallery">
                 <img src="./Photo/mood-home.jpg" alt="首頁">
                 <img src="./Photo/mood-main.jpg" alt="主畫面">
@@ -413,6 +487,7 @@
         <div class="project-card">
             <span class="tech-tag">C# Windows Forms ＆ 桌面應用</span>
             <h3>個人記帳系統｜Expense Tracker</h3>
+            <div class="swipe-hint">左右滑動查看更多照片 ➔</div>
             <div class="image-row">
                 <img src="./Photo/inital.png" alt="初始畫面">
                 <img src="./Photo/income.png" alt="收入畫面">
